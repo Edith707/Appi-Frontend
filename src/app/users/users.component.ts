@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 import { User } from '../user';
 import { UserService } from '../user.service';
 
@@ -9,14 +10,14 @@ import { UserService } from '../user.service';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  public newUser: User = new User()
+  public newUser: User = new User();
   users: User[];
+
   constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.getUsers();
   }
-
 
   getUsers(): void {
     this.userService.getUsers()
@@ -27,6 +28,8 @@ export class UsersComponent implements OnInit {
     this.userService.createUser(this.newUser)
     .subscribe(user => {
       this.users.push(user);
-      this.newUser = new User(); });
+      this.newUser = new User();
+    });
   }
+
 }
